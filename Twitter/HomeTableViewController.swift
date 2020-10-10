@@ -10,9 +10,29 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
 
+    var tweetArray = [NSDictionary]()
+    var numOfTweets: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTweets()
     }
+    
+    func loadTweets() {
+        let homeUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        let params = ["count": 10]
+        TwitterAPICaller.client?.getDictionariesRequest(url: homeUrl, parameters: params, success: { (tweets: [NSDictionary]) in
+            self.tweetArray.removeAll()
+            for tweet in tweets {
+                self.tweetArray.append(tweet)
+                print(tweet)
+            }
+            self.tableView.reloadData()
+        }, failure: { (Error) in
+            print("Could not retrieve tweets")
+        })
+    }
+    
     
     @IBAction func onLogout(_ sender: Any) {
     TwitterAPICaller.client?.logout()
@@ -30,13 +50,23 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return tweetArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetCellTableViewCell
-        cell.username.text = "some name"
-        cell.tweetContent.text = "something else"
+        
+        let tweet = tweetArray[indexPath.row]
+        let user = tweet["user"] as! NSDictionary
+        cell.username.text = user["name"] as? String
+        cell.tweetContent.text = tweet["text"] as! String
+        
+        let imageUrl = URL(string: (user["profile_image_url_https"] as! String))
+        let data = try? Data(contentsOf: imageUrl!)
+        if let imageData = data {
+            cell.profileImage.image = UIImage(data: imageData)
+        }
+        
         return cell
     }
 
