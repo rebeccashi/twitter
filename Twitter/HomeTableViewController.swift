@@ -22,6 +22,7 @@ class HomeTableViewController: UITableViewController {
     
     @IBAction func onLogout(_ sender: Any) {
     TwitterAPICaller.client?.logout()
+        UserDefaults.standard.set(false, forKey: "userLoggedIn")
         //make this modally presented view disappear
         self.dismiss(animated: true, completion: nil)
     }
