@@ -56,13 +56,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GAH-iL-9LQ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="101" id="GAH-iL-9LQ" customClass="TweetCellTableViewCell" customModule="Twitter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GAH-iL-9LQ" id="WQX-aM-SP8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iOP-dO-AJg">
+                                            <rect key="frame" x="8" y="10" width="65" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Hpu-dm-UhU"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="Y8a-kT-cvK"/>
+                                                <constraint firstAttribute="width" constant="65" id="dIJ-f8-WgE"/>
+                                                <constraint firstAttribute="height" constant="65" id="ieR-PX-bSq"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juo-WI-iwf">
+                                            <rect key="frame" x="81" y="11" width="82" height="22"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tweet Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-DZ-Doa">
+                                            <rect key="frame" x="81" y="37" width="278" height="53"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iOP-dO-AJg" firstAttribute="top" secondItem="WQX-aM-SP8" secondAttribute="top" constant="8" id="1Ly-hS-DmD"/>
+                                        <constraint firstItem="iOP-dO-AJg" firstAttribute="top" secondItem="WQX-aM-SP8" secondAttribute="top" constant="8" id="4MP-Y9-xAc"/>
+                                        <constraint firstItem="kJ2-DZ-Doa" firstAttribute="trailing" secondItem="WQX-aM-SP8" secondAttribute="trailingMargin" id="7sn-3B-3EQ"/>
+                                        <constraint firstItem="iOP-dO-AJg" firstAttribute="top" secondItem="WQX-aM-SP8" secondAttribute="top" id="EEo-Yd-CFP"/>
+                                        <constraint firstItem="iOP-dO-AJg" firstAttribute="top" secondItem="WQX-aM-SP8" secondAttribute="top" constant="10" id="Eu0-Um-wmR"/>
+                                        <constraint firstItem="kJ2-DZ-Doa" firstAttribute="bottom" secondItem="WQX-aM-SP8" secondAttribute="bottomMargin" id="F1N-S7-64Q"/>
+                                        <constraint firstItem="kJ2-DZ-Doa" firstAttribute="leading" secondItem="iOP-dO-AJg" secondAttribute="trailing" constant="8" id="JE9-O1-h0d"/>
+                                        <constraint firstItem="juo-WI-iwf" firstAttribute="leading" secondItem="iOP-dO-AJg" secondAttribute="trailing" constant="8" id="TZl-fL-ngr"/>
+                                        <constraint firstItem="juo-WI-iwf" firstAttribute="top" secondItem="WQX-aM-SP8" secondAttribute="topMargin" id="b5w-jW-Del"/>
+                                        <constraint firstItem="iOP-dO-AJg" firstAttribute="leading" secondItem="WQX-aM-SP8" secondAttribute="leading" constant="10" id="dmx-c3-KQO"/>
+                                        <constraint firstItem="kJ2-DZ-Doa" firstAttribute="top" secondItem="juo-WI-iwf" secondAttribute="bottom" constant="4" id="gY0-oT-jG4"/>
+                                        <constraint firstItem="iOP-dO-AJg" firstAttribute="leading" secondItem="WQX-aM-SP8" secondAttribute="leading" id="i6Z-ai-nwV"/>
+                                        <constraint firstItem="juo-WI-iwf" firstAttribute="top" secondItem="WQX-aM-SP8" secondAttribute="topMargin" id="nD0-aT-KEH"/>
+                                        <constraint firstItem="iOP-dO-AJg" firstAttribute="leading" secondItem="WQX-aM-SP8" secondAttribute="leading" constant="8" id="nXv-EU-Zcx"/>
+                                        <constraint firstItem="juo-WI-iwf" firstAttribute="leading" secondItem="iOP-dO-AJg" secondAttribute="trailing" constant="8" id="sfj-IE-9XW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="profileImage" destination="iOP-dO-AJg" id="sUq-Fz-arD"/>
+                                    <outlet property="tweetContent" destination="kJ2-DZ-Doa" id="PhN-Fm-MIo"/>
+                                    <outlet property="username" destination="juo-WI-iwf" id="BiL-y3-Lv3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -81,7 +126,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtH-xh-psq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1599" y="124"/>
+            <point key="canvasLocation" x="1597.5999999999999" y="123.68815592203899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bqh-Ql-Uhe">

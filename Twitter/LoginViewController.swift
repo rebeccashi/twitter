@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let homeUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+//        TwitterAPICaller.client?.postRequest(url: homeUrl, parameters: <#T##[Any]#>, success: <#T##() -> ()#>, failure: <#T##(Error) -> ()#>)
     }
     
     override func viewDidAppear(_ animated: Bool) {
