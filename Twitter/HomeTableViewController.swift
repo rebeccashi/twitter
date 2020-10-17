@@ -22,6 +22,8 @@ class HomeTableViewController: UITableViewController {
         //selector used to call the loadTweets function the second time
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 160
     }
     
     @objc func loadTweets() {
@@ -64,6 +66,8 @@ class HomeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetCellTableViewCell
         
         let tweet = tweetArray[indexPath.row]
+        cell.tweet = tweet
+
         let user = tweet["user"] as! NSDictionary
         cell.username.text = user["name"] as? String
         cell.tweetContent.text = tweet["text"] as! String
@@ -73,6 +77,9 @@ class HomeTableViewController: UITableViewController {
         if let imageData = data {
             cell.profileImage.image = UIImage(data: imageData)
         }
+        
+        cell.favorited = tweet["favorited"] as! Bool
+        cell.id = tweet["id"] as! Int
         
         return cell
     }
